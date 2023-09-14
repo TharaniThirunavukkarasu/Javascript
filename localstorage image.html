@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <!--store image into local storage -->
+    <h1>store image in local storage</h1>
+    <input type="file" id="file1">
+    <button id="but1" >go to second page</button>
+    <script>
+        file1.addEventListener("change",() => {
+            const fr = new FileReader();
+            fr.readAsDataURL(file1.files[0]);
+            fr.addEventListener("load", () => {
+                const url = fr.result;
+                localStorage.setItem("my-image", url)
+            })
+        });
+
+        button1=document.getElementById("but1").addEventListener("click",()=>{
+            window.location.href="localstorage secondpage.html"
+        });
+
+
+
+        //store data into local storage
+        var a=prompt("enter the value");
+        localStorage.setItem("value",a);
+        let value=localStorage.getItem("value");
+        document.write(a)
+
+
+        
+
+    </script>
+</body>
+
+</html>

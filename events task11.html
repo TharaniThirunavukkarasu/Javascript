@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Date Manipulation</title>
+</head>
+<body>
+  <label for="dateInput">Enter a date:</label>
+  <input type="date" id="dateInput">
+  <br>
+  
+  <button onclick="displayDate()">Display Dates</button>
+  <br>
+  
+  <label for="datePlus">Date + 5 days:</label>
+  <input type="text" id="datePlus" readonly>
+  <br>
+  
+  <label for="dateMinus">Date - 5 days:</label>
+  <input type="text" id="dateMinus" readonly>
+
+  <script>
+    function displayDate() {
+      var dateInput = document.getElementById("dateInput");
+      var datePlusInput = document.getElementById("datePlus");
+      var dateMinusInput = document.getElementById("dateMinus");
+      
+      var selectedDate = dateInput.value;
+      
+      if (selectedDate === "") {
+        alert("Please enter a date.");
+        return;
+      }
+      
+      var inputDate = new Date(selectedDate);
+      
+      if (isNaN(inputDate)) {
+        alert("Invalid date entered.");
+        return;
+      }
+      
+      var plusFiveDays = new Date(inputDate);
+      plusFiveDays.setDate(inputDate.getDate() + 5);
+      
+      var minusFiveDays = new Date(inputDate);
+      minusFiveDays.setDate(inputDate.getDate() - 5);
+      
+      datePlusInput.value = formatDate(plusFiveDays);
+      dateMinusInput.value = formatDate(minusFiveDays);
+    }
+    
+    function formatDate(date) {
+      var year = date.getFullYear();
+      var month = String(date.getMonth() + 1).padStart(2, '0');
+      var day = String(date.getDate()).padStart(2, '0');
+      
+      return year + '-' + month + '-' + day;
+    }
+  </script>
+</body>
+</html>

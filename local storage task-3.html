@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- get the data from the form and store the in local storage and display in layout -->
+    <form>
+        <p id="para1"></p>
+        <input type="text" id="nam1">
+        <p id="para2"></p>
+        <input type="text" id="nam2">
+        <p id="para3"></p>
+        
+        <input type="number" id="num1">
+        <p id="demo"></p>
+        <input type="button" onclick="setItem()" value="SET">
+        <input type="button" onclick="getItem()" value="GET">
+    </form>
+    <script>
+        function setItem(){
+        document.getElementById("para1").innerHTML="name1"
+        var nam1=document.getElementById("nam1").value
+        document.getElementById("para2").innerHTML="name2"
+        var nam2=document.getElementById("nam2").value
+        document.getElementById("para3").innerHTML="Age"
+        var num1=document.getElementById("num1").value
+        localStorage.setItem("first name",nam1);
+        localStorage.setItem("last name",nam2);
+        localStorage.setItem("age",num1);
+        
+        }
+        function getItem(){
+           var b= localStorage.getItem("first name");
+        var c=localStorage.getItem("last name");
+        var d=localStorage.getItem("age");
+        document.getElementById("demo").innerHTML=b+c+d
+        }
+        // document.write(name1)
+        // document.write(name2)
+        // document.write(age)
+    </script>
+</body>
+</html>

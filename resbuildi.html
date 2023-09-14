@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Resume Generator</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="./resbuildi.css" />
+  </head>
+  <body>
+    <!-- form  -->
+    <div id="cv-form">
+      <div class="header text-center bg-dark text-light py-2">
+        <h2>Resume Generator</h2>
+      </div>
+
+      <div class="container mt-3">
+        <div class="row">
+          <!-- colume 1 -->
+
+          <div class="col-md-6 mt-2">
+            <h3 class="fw-bold text-decoration-underline">Personal Details</h3>
+
+            <div class="from-group mt-4 fw-semibold">
+              <label for="">Select your photo</label>
+              <input id="imgField" type="file" class="form-control" />
+               <label for="">Select your photo</label>
+              <input id="imgField" type="file" class="form-control" />
+            </div>
+
+            <div class="form-group mt-3 fw-semibold">
+              <label for="namefield">Your Name</label>
+              
+            </div>
+
+            <div class="form-group mt-2 fw-semibold">
+              <label for="contactfield"> Your Contact No.</label>
+              <input
+                type="tel"
+                id="contactfield"
+                class="form-control"
+                placeholder="Enter your Contact name"
+                maxlength="10"
+              />
+            </div>
+
+            <div class="form-group mt-3 fw-semibold">
+              <label for="emailfield"> Your Email Id</label>
+              <input
+                type="email"
+                id="emailfield"
+                class="form-control"
+                placeholder="Enter your email id "
+              />
+            </div>
+
+            <div class="form-group mt-3 fw-semibold">
+              <label for="addressfield">Your Address</label>
+              <textarea
+                rows="3"
+                class="form-control"
+                placeholder="Enter your Address"
+                id="addressfield"
+              ></textarea>
+            </div>
+
+            <h3 class="fw-bold mt-3 text-decoration-underline">Social Link</h3>
+
+            <div class="form-group mt-2 fw-semibold">
+              <label for="githubfield">Github Link</label>
+              <input
+                type="text"
+                id="githubfield"
+                class="form-control"
+                placeholder="Enter your Github Profile link"
+              />
+            </div>
+            <div class="form-group mt-3 fw-semibold">
+              <label for="linkedinfield"> LinkedIn Link</label>
+              <input
+                type="text"
+                id="linkedinfield"
+                class="form-control"
+                placeholder="Enter your Linkedin Profile link"
+              />
+            </div>
+
+            <h3 class="fw-bold mt-3 text-decoration-underline">
+              Languages Known
+            </h3>
+
+            <div class="form-group mt-3 fw-semibold" id="language">
+              <div id="languageFieldsContainer">
+                <input
+                  type="text"
+                  class="form-control languagefield mt-2"
+                  placeholder="Enter the language you know"
+                />
+              </div>
+            </div>
+
+            <div class="container text-center mt-2" id="languageAddButton">
+              <button onclick="addNewLang()" class="btn btn-info btn-sm">
+                Add
+              </button>
+            </div>
+          </div>
+
+          <!-- column 2 -->
+          <div class="col-md-6 mt-2">
+            <h3 class="fw-bold text-decoration-underline">
+              Professional Details
+            </h3>
+
+            <div class="form-group mt-4 fw-semibold">
+              <label for="objfield">Objective</label>
+              <textarea
+                rows="3"
+                class="form-control"
+                placeholder="Enter  Objective "
+                id="objfield"
+              ></textarea>
+            </div>
+
+            <div class="form-group mt-2 fw-semibold" id="sl">
+              <label for="skillfield">Skills</label>
+              <textarea
+                rows="1"
+                class="form-control tallentfield"
+                placeholder="Enter your Skill set"
+                id="skillfield"
+              ></textarea>
+
+              <!-- add new textarea by js -->
+              <div class="container text-center mt-2" id="slAddButton">
+                <button onclick="addNewSkill()" class="btn btn-info btn-sm">
+                  Add
+                </button>
+              </div>
+            </div>
+
+            <div class="form-group mt-3 fw-semibold" id="we">
+              <label for="">Work Experience</label>
+
+              <!-- Add fields for position, company name, start date, end date, and description -->
+              <div class="work-experience">
+                <div class="row">
+                  <div class="col">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Position"
+                      name="positionField"
+                    />
+                  </div>
+                  <div class="col">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Company Name"
+                      name="companyField"
+                    />
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col">
+                    <input
+                      type="date"
+                      class="form-control"
+                      placeholder="Start Date"
+                      name="startDateField"
+                    />
+                  </div>
+                  <div class="col">
+                    <input
+                      type="date"
+                      class="form-control"
+                      placeholder="End Date"
+                      name="endDateField"
+                    />
+                  </div>
+                </div>
+                <textarea
+                  rows="3"
+                  class="form-control wefield mt-3"
+                  placeholder="Enter your Work Experience Description"
+                  name="expField"
+                ></textarea>
+              </div>
+
+              <!-- add new work experience fields by JavaScript -->
+              <div class="container text-center mt-2" id="weAddButton">
+                <button onclick="addNewExp()" class="btn btn-info btn-sm">
+                  Add
+                </button>
+              </div>
+            </div>
+
+            <div class="form-group mt-3 fw-semibold" id="edu">
+              <label for="">Education</label>
+              <div class="education">
+                <div class="row">
+                  <div class="col">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Degree"
+                      name="degreeField"
+                    />
+                  </div>
+                  <div class="col">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Institution"
+                      name="institutionField"
+                    />
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col">
+                    <input
+                      type="date"
+                      class="form-control"
+                      placeholder="Completion Date"
+                      name="completionDateField"
+                    />
+                  </div>
+                </div>
+                <textarea
+                  rows="3"
+                  class="form-control edufield mt-3"
+                  placeholder="Enter your Education Description"
+                  name="eduField"
+                ></textarea>
+              </div>
+
+              <div class="container text-center mt-2" id="EAddButton">
+                <button onclick="addNewEdu()" class="btn btn-info btn-sm">
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container text-center my-4">
+          <button onClick="generateResume()" class="btn btn-success btn-large">
+            Generate Resume
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!--Resume template-->
+
+    <div class="container" id="cv-template">
+      <div class="row">
+        <div class="col-md-4 text-center py-5 left-template">
+          <!-- first section -->
+
+          <img id="my-img" src="" alt="image" class="img-fluid myimg" />
+          <div class="container">
+            <h1 id="nameT1"></h1>
+            <hr />
+            <p id="noT"></p>
+            <p id="addressT"></p>
+            <p id="emailT"></p>
+          </div>
+          <hr />
+
+          <p>
+            <a id="githubT" href="#"></a>
+          </p>
+          <p>
+            <a id="linkedinT" href="#"></a>
+          </p>
+
+          <div class="form-group mt-3 fw-semibold">
+            <label for="languagesT">Languages Known</label>
+            <ul id="languagesT" class="list-unstyled">
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-8 py-4">
+          <!-- second-section -->
+
+          <!-- objective  -->
+          <div class="card mt-4">
+            <div class="card-header background">
+              <h3>Objective</h3>
+            </div>
+            <div class="card-body">
+              <p id="objT"></p>
+            </div>
+          </div>
+
+          <!-- skill set -->
+          <div class="card mt-4">
+            <div class="card-header background">
+              <h3>Skills</h3>
+            </div>
+            <div class="card-body">
+              <ul id="skillT">
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- work experience -->
+
+          <div class="card mt-4">
+            <div class="card-header background">
+              <h3>Work Experience</h3>
+            </div>
+            <div class="card-body">
+              <ul id="weT">
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Education -->
+
+          <div class="card mt-4">
+            <div class="card-header background">
+              <h3>Education</h3>
+            </div>
+            <div class="card-body">
+              <ul id="eduT">
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="container text-center mt-4">
+            <button
+              onclick="printResume()"
+              class="btn btn-danger"
+              id="cv-print"
+            >
+              Print Resume
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+    <script src="res buildi.js"></script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Integer Select Box</title>
+  </head>
+  <body>
+    <label for="integerInput">Enter an integer:</label>
+    <input type="text" id="integerInput" />
+
+    <select id="selectBox"></select>
+
+    <script>
+      const integerInput = document.getElementById("integerInput");
+      const selectBox = document.getElementById("selectBox");
+
+      function isInteger(value) {
+        return !isNaN(value) && Number.isInteger(parseFloat(value));
+      }
+
+      function handleKeyEvent(event) {
+        const value = event.target.value;
+
+        if (!isInteger(value)) {
+          event.target.value = "";
+          return;
+        }
+
+        if (event.key === "Enter") {
+          const option = document.createElement("option");
+          option.value = value;
+          option.text = value;
+          selectBox.appendChild(option);
+          event.target.value = "";
+        }
+      }
+
+      integerInput.addEventListener("keyup", handleKeyEvent);
+    </script>
+  </body>
+</html>

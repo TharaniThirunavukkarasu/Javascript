@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dropdown Example</title>
+  </head>
+  <body>
+    <label for="dropdown">Select a value:</label>
+    <select id="dropdown" onchange="displayPreviousValues(this.value)">
+      <option value="">-- Select --</option>
+      <option value="value1">Value 1</option>
+      <option value="value2">Value 2</option>
+      <option value="value3">Value 3</option>
+    </select>
+
+    <div id="previousValues"></div>
+
+    <script>
+      function displayPreviousValues(selectedValue) {
+        var previousValuesDiv = document.getElementById("previousValues");
+        previousValuesDiv.innerHTML = "";
+
+        if (selectedValue !== "") {
+          var previousValues = getPreviousValues(selectedValue);
+
+          if (previousValues.length > 0) {
+            var list = document.createElement("ul");
+            for (var i = 0; i < previousValues.length; i++) {
+              var listItem = document.createElement("li");
+              listItem.textContent = previousValues[i];
+              list.appendChild(listItem);
+            }
+            previousValuesDiv.appendChild(list);
+          } else {
+            previousValuesDiv.textContent = "No previous values available.";
+          }
+        }
+      }
+
+      function getPreviousValues(selectedValue) {
+    
+        if (selectedValue === "value1") {
+          return ["Previous 1", "Previous 2"];
+        } else if (selectedValue === "value2") {
+          return ["Previous 3", "Previous 4", "Previous 5"];
+        } else if (selectedValue === "value3") {
+          return ["Previous 6"];
+        } else {
+          return [];
+        }
+      }
+    </script>
+  </body>
+</html>

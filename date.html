@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+//get current date
+// function curday(symbol){
+//     var a=new Date()
+//     var month=a.getMonth()+1;
+//     var date=a.getDate();
+//     var year=a.getFullYear();
+//     console.log(`${month}${symbol}${date}${symbol}${year}`)
+//     }curday('-')
+//     curday('*')
+
+
+//find days in months
+    function finddays(month,year){
+        return new Date(year,month,0)
+        .getDate()
+        }
+    console.log(finddays(2,2012))
+
+
+//get the month name from particular date
+    function monthName(date) {
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",                                                 ,
+    "November",
+    "December",
+  ];
+  let d= date.getMonth();
+  return months[d];
+}
+console.log(monthName(new Date("10/11/2009")))
+console.log(monthName(new Date("11/13/2014")))
+    </script>
+</body>
+</html>
+
+    
+    

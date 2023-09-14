@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Password Generation</title>
+  </head>
+  <body>
+    <label for="name">Name:</label>
+    <input type="text" id="name" />
+    <br />
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" />
+    <br />
+    <label for="password">Password:</label>
+    <input type="password" id="password" readonly />
+    <br />
+    <button onclick="generatePassword()">Generate Password</button>
+
+    <script>
+      function generatePassword() {
+        var nameInput = document.getElementById("name");
+        var dobInput = document.getElementById("dob");
+        var passwordInput = document.getElementById("password");
+
+        var name = nameInput.value.trim().toLowerCase();
+        var dob = dobInput.value;
+
+        if (name === "" || dob === "") {
+          alert("Please enter both name and date of birth.");
+          return;
+        }
+
+        var password = name.substr(0, 4) + dob.replace(/-/g, "");
+        passwordInput.value = password;
+      }
+    </script>
+  </body>
+</html>

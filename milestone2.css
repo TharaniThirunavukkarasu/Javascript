@@ -1,0 +1,54 @@
+*{
+  margin: 0 auto;
+  padding: 0 auto;
+}
+body{
+  background:linear-gradient(to right, blue,skyblue);
+}
+#content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .item {
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+  img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  .banner {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .more-info {
+    text-decoration: underline;
+    cursor: pointer;
+    color: antiquewhite;
+    
+  }
+  .banhead{
+    margin:20px;
+  }
+  .text1{
+    margin-left: 20px;
+  }
+  .button1{
+margin: 20px;
+height: 40px;
+width:230px;
+border-radius:20px;
+border: none;
+background-color: pink;
+  }
+  .product{
+    margin:20px
+}

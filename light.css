@@ -1,0 +1,83 @@
+* {
+    margin: 0 auto;
+    padding: 0 auto;
+}
+
+.main {
+    width: 500px;
+    height: 500px;
+    background-color: skyblue;
+    margin: 0 auto;
+}
+
+h1 {
+    color: darkblue;
+    font-size: 60px;
+    font-weight: bolder;
+}
+
+#stopButton {
+    height: 50px;
+    width: 80px;
+    margin-left: 90px;
+    margin: 33px;
+    border-radius: 20px;
+    border: none;
+    background-color:darkblue;
+
+}
+
+#readyButton {
+    height: 50px;
+    width: 80px;
+    margin-left: 90px;
+    margin: 33px;
+    border-radius: 20px;
+    background-color:navy;
+    border: none;
+  
+
+}
+
+#goButton {
+    height: 50px;
+    width: 80px;
+    margin-left: 90px;
+    margin: 33px;
+    border-radius: 20px;
+    border: none;
+    background-color:darkblue;
+
+}
+.signal{
+    background-color:darkblue;
+    height: 350px;
+    width: 110px;
+    margin-top: -340px;
+    padding: 5px;
+    border-radius: 30px;
+}
+#stopLight{
+height: 50px;
+width:50px;
+background-color:gray;
+border-radius: 50%;
+position: relative;
+top:30px;
+}
+#readyLight{
+    height: 50px;
+    width:50px;
+    background-color:gray;
+    border-radius: 50%;
+    position: relative;
+    top:80px;
+}
+#goLight{
+    height: 50px;
+    width:50px;
+    background-color:gray;
+    border-radius: 50%;
+    position: relative;
+    top:140px;
+}

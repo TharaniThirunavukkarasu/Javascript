@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>eventtask6</title>
+  </head>
+  <body>
+    <h2>Enter the Number: <input type="text" id="input" /></h2>
+    <button type="button" onclick="addInt()">Check</button>
+    <select name="integer-select" id="selectValue"></select>
+
+    <script>
+      function addInt() {
+        var input = document.getElementById("input").value;
+        var inputvalue = parseInt(input);
+        if (isNaN(inputvalue) || inputvalue == null) {
+          alert("It is not a integer");
+        } else {
+          var input = document.getElementById("input").value;
+          var inputvalue = parseInt(input);
+          var select = document.getElementById("selectValue");
+          var option = document.createElement("option");
+          option.text = inputvalue;
+          select.add(option);
+        }
+      }
+    </script>
+  </body>
+</html>

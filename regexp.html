@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="color:green">Reg exp meta characters</h1>
+    <!-- <p>Hello world @12345 - _ @#$%&*!</p> -->
+    <p>GEEKSFORGEEKS 2 GeeksforGeeks 3 is the computer science portal for 7 geeks. 1 -1</p>
+    <button onclick="geek()">click it</button>
+    <p id="app"></p>
+    <script>
+        function geek(){
+            //regular expression//
+            var str1="GEEKSFORGEEKS 2 GeeksforGeeks 3 is the computer science portal for 7 geeks. 1 -1";
+            var regex4=/[A]/gi;
+            // var regex4=/[^0-9]/g;
+            // var regex4=/[^a-z]/g;
+            // var regex4=/[^A-z]/g;
+
+
+            //meta character//
+            // var str1="Hello world hoo @12345 _ - #$!%";
+            // var regex4=/H...o/gi;
+            // var regex4=/\w/g;
+            // var regex4=/\W/g;
+            // var regex4=/\d/g;
+            // var regex4=/\D/g;
+            // var regex4=/\s/g;
+            // var regex4=/\S/g;
+
+            //Quantifiers//
+            // var str1="Hellozoo loooo World? Hello W3schools!";
+            // var regex4=/el+/g;
+            // var regex4=/lo*/g;
+            // var regex4=/lo?/g;
+            // var regex4=/\w(7)/g;
+            // var regex4=/\w(5,6)/g;
+
+
+
+            var match4=str1.match(regex4);
+            document.getElementById("app").innerHTML="Found"+match4.length+"matches:"+match4;
+        }
+
+    </script>
+</body>
+</html>

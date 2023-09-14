@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+// store a value in variable and send the data in local storage and display in html page 
+        var a=prompt("enter the value");
+        localStorage.setItem("value",a);
+        let value=localStorage.getItem("value");
+        document.write(a)
+    </script>
+</body>
+</html>

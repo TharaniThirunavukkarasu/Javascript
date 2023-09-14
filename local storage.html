@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Local Storage Example</title>
+  <style>
+    #content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .item {
+      width: 300px;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+    img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+    .banner {
+      background-color: #f1f1f1;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .more-info {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Local Storage Example</h1>
+
+  <form id="bannerForm">
+    <h2>Banner Contents</h2>
+    <label for="bannerHeader">Banner Header:</label>
+    <input type="text" id="bannerHeader" required><br>
+    <label for="bannerDescription">Banner Description:</label>
+    <textarea id="bannerDescription" required></textarea><br>
+    <button type="submit">Add to Local Storage</button>
+  </form>
+
+  <form id="cardForm">
+    <h2>Card View</h2>
+    <label for="productImage">Product Image URL:</label>
+    <input type="text" id="productImage" required><br>
+    <label for="productName">Product Name:</label>
+    <input type="text" id="productName" required><br>
+    <label for="productDescription">Product Description:</label>
+    <textarea id="productDescription" required></textarea><br>
+    <label for="productPrice">Product Price:</label>
+    <input type="number" id="productPrice" required><br>
+    <button type="submit">Add to Local Storage</button>
+  </form>
+
+  <div id="content"></div>
+
+  <script>
+    // Function to add banner contents to the local storage
+    function addBannerToLocalStorage(bannerHeader, bannerDescription) {
+      const banner = {
+        type: 'banner',
+        bannerHeader,
+        bannerDescription
+      };
+      const content = getContentsFromLocalStorage();
+      content.push(banner);
+      localStorage.setItem('content', JSON.stringify(content));
+    }
+
+    // Function to add card view to the local storage
+    function addCardToLocalStorage(productImage, productName, productDescription, productPrice) {
+      const card = {
+        type: 'card',
+        productImage,
+        productName,
+        productDescription,
+        productPrice
+      };
+      const content = getContentsFromLocalStorage();
+      content.push(card);
+      localStorage.setItem('content', JSON.stringify(content));
+    }
+
+    // Function to retrieve contents from the local storage
+    function getContentsFromLocalStorage() {
+      const content = localStorage.getItem('content');
+      return content ? JSON.parse(content) : [];
+    }
+
+    // Function to display contents from the local storage
+    function displayContentsFromLocalStorage() {
+      const content = document.getElementById('content');
+      content.innerHTML = '';
+
+      const contents = getContentsFromLocalStorage();
+      for (const item of contents) {
+        if (item.type === 'banner') {
+          const bannerContainer = document.createElement('div');
+          bannerContainer.className = 'banner';
+          bannerContainer.innerHTML = `
+            <h3>${item.bannerHeader}</h3>
+            <p>${item.bannerDescription}</p>
+          `;
+          content.appendChild(bannerContainer);
+        } else if (item.type === 'card') {
+          const cardContainer = document.createElement('div');
+          cardContainer.className = 'item';
+          cardContainer.innerHTML = `
+            <img src="${item.productImage}" alt="Product Image">
+            <h3>${item.productName}</h3>
+            <p>${item.productDescription}</p>
+            <p>Price: $${item.productPrice}</p>
+            <a class="more-info" href="product.html">More Info</a>
+          `;
+          content.appendChild(cardContainer);
+        }
+      }
+
+      // Add event listener for "More Info" links
+      const moreInfoLinks = document.getElementsByClassName('more-info');
+      for (const link of moreInfoLinks) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const productName = this.parentNode.querySelector('h3').textContent;
+          localStorage.setItem('selectedProduct', productName);
+          window.location.href = this.getAttribute('href');
+        });
+      }
+    }
+
+    // Add submit event listener to the banner form
+    const bannerForm = document.getElementById('bannerForm');
+    bannerForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const bannerHeader = document.getElementById('bannerHeader').value;
+      const bannerDescription = document.getElementById('bannerDescription').value;
+      addBannerToLocalStorage(bannerHeader, bannerDescription);
+      displayContentsFromLocalStorage();
+      this.reset();
+    });
+
+    // Add submit event listener to the card form
+    const cardForm = document.getElementById('cardForm');
+    cardForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const productImage = document.getElementById('productImage').value;
+      const productName = document.getElementById('productName').value;
+      const productDescription = document.getElementById('productDescription').value;
+      const productPrice = document.getElementById('productPrice').value;
+      addCardToLocalStorage(productImage, productName, productDescription, productPrice);
+      displayContentsFromLocalStorage();
+      this.reset();
+    });
+
+    // Display contents on page load
+    displayContentsFromLocalStorage();
+  </script>
+</body>
+</html>
